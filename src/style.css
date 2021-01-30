@@ -1,0 +1,21 @@
+h1,
+p {
+  font-family: Lato;
+}
+
+.pagination {
+  text-align: center;
+}
+
+.btn {
+  padding: 10px;
+}
+
+.btn > button {
+  margin: 5px;
+}
+
+.user-container {
+  border: 1px solid black;
+  margin: 10px;
+}
