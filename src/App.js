@@ -109,6 +109,7 @@ export default function Pagination() {
   return (
     <div class="pagination">
       <h1>Pagination</h1>
+       {renderPaginationConfig()}
       {renderUserDeatils()}
       {renderPaginationConfig()}
     </div>
