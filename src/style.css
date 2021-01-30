@@ -18,4 +18,6 @@ p {
 .user-container {
   border: 1px solid black;
   margin: 10px;
+  background-color: #5a20cb;
+  color: white;
 }

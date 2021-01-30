@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 
 export default function Pagination() {
@@ -35,6 +35,17 @@ export default function Pagination() {
       location: "France"
     }
   ]);
+
+  useEffect(() => {
+    async function getData() {
+      const res = await fetch("https://jsonplaceholder.typicode.com/users");
+      res
+        .json()
+        .then(result => console.log(setUsers(result)))
+        .then(err => console.log(error));
+    }
+    getData();
+  });
 
   const perPage = 2;
   const totalPages = Math.ceil(users.length / perPage);
@@ -86,6 +97,8 @@ export default function Pagination() {
       return (
         <div class="user-container">
           <h1>{data.name}</h1>
+          <h4>{data.website}</h4>
+          <p>{data.phone}</p>
           <h4>{data.age}</h4>
           <p>{data.location}</p>
         </div>
