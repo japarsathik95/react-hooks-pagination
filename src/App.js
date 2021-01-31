@@ -37,15 +37,16 @@ export default function Pagination() {
   ]);
 
   useEffect(() => {
-    async function getData() {
-      const res = await fetch("https://jsonplaceholder.typicode.com/users");
-      res
-        .json()
-        .then(result => console.log(setUsers(result)))
-        .then(err => console.log(error));
-    }
     getData();
-  });
+  }, []);
+
+  async function getData() {
+    const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    res
+      .json()
+      .then(result => console.log(setUsers(result)))
+      .then(err => console.log(err));
+  }
 
   const perPage = 2;
   const totalPages = Math.ceil(users.length / perPage);
@@ -58,6 +59,7 @@ export default function Pagination() {
     return pages.map(data => {
       return (
         <button
+          key={data}
           onClick={() => setCurrentPage(data)}
           disabled={currentPage === data}
         >
@@ -95,7 +97,7 @@ export default function Pagination() {
 
     return result[currentPage - 1].map(data => {
       return (
-        <div class="user-container">
+        <div class="user-container" key={data.id}>
           <h1>{data.name}</h1>
           <h4>{data.website}</h4>
           <p>{data.phone}</p>
@@ -109,7 +111,7 @@ export default function Pagination() {
   return (
     <div class="pagination">
       <h1>Pagination</h1>
-       {renderPaginationConfig()}
+      {renderPaginationConfig()}
       {renderUserDeatils()}
       {renderPaginationConfig()}
     </div>
